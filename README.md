@@ -1,4 +1,5 @@
 ﻿# DSA-LAB-JIIT-SEM-III
-Use this as a referance,**DO NOT** bluntly copy.
+
+Use this as a reference!
 Correct me if you find any errors.
-Have a  nice day, bye bye!
+Have a nice day, bye bye!

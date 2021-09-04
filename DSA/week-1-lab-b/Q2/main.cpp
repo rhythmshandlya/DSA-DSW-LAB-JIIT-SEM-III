@@ -87,7 +87,7 @@ int main()
         7,
     };
     int n = 5;
-    cout << "Larger than " << n << ":" << isGreaterThan(larger, n) << "\n";
+    cout << "Larger than " << n << ": " << isGreaterThan(larger, n) << "\n";
 
     vector<bool> areTru = {true, true, false, false, true, true};
     cout << "Total true: " << areTrue(areTru) << "\n";

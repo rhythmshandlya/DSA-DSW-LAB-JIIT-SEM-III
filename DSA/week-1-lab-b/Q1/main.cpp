@@ -20,7 +20,10 @@ int main()
 {
     int n;
     cin >> n;
+    //Without STL
     int *arr = new int[n];
+    //With STL
+    //vector<int> arr(n);
 
     //TAKE INPUT AND PRINT
     for (int i = 0; i < n; i++)
