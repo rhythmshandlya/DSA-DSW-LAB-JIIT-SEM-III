@@ -83,6 +83,7 @@ int main()
         else
             cout << v4[i] << " ";
     }
+
     //finding duplicate elements string
     v2 = {"cat", "dog", "cat", "pet", "apple", "apple"};
     cout << "\nRepeated elements are: ";
