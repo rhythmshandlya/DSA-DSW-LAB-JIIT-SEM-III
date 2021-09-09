@@ -33,10 +33,14 @@ public:
     int maxNode();
     int minNode();
 
-    void push_back(int data);
-    void push_front(int data);
-    void push(int index, int data);
-    void storeDigits(int num);
+    void push_back(int);
+    void pop_back();
+    void push_front(int);
+    void push(int, int);
+    void storeDigits(int);
+
+    void deleteElement(int);
+    void swapExtream();
 };
 
 void LinkedList::push_back(int data)
@@ -56,6 +60,22 @@ void LinkedList::push_back(int data)
     temp->next = newNode;
 }
 
+void LinkedList::pop_back()
+{
+    if (!head)
+    {
+        cout << "List Empty!\n";
+        return;
+    }
+    Node *temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->prev->next = NULL;
+    delete temp;
+}
+
 void LinkedList::push_front(int data)
 {
     if (!head)
@@ -68,11 +88,44 @@ void LinkedList::push_front(int data)
     head->prev = newHead;
     head = newHead;
 }
-
+void LinkedList::deleteElement(int index)
+{
+    if (index < 0)
+    {
+        cout << "Invalid Index To DeleteElement Function\n";
+        return;
+    }
+    if (index == 0)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+    }
+    Node *temp = head;
+    while (index && temp)
+    {
+        temp = temp->next;
+        index--;
+    }
+    if (temp)
+    {
+        temp->prev->next = temp->next;
+        delete temp;
+        return;
+    }
+    else
+    {
+        cout << "Invalid Index To DeleteElement Function/n";
+        return;
+    }
+}
 void LinkedList::push(int index, int data)
 {
     if (index < 0)
-        cout << "Invalid Index To Push Function";
+    {
+        cout << "Invalid Index To Push Function/n";
+        return;
+    }
 
     if (index == 0)
     {
@@ -81,12 +134,13 @@ void LinkedList::push(int index, int data)
     }
 
     Node *temp = head;
-    while (temp && index > 1)
+
+    index++;
+    while (temp && index)
     {
         temp = temp->next;
         --index;
     }
-
     cout << temp->data << " ";
     Node *newNode = new Node(data);
     newNode->next = temp->next;
@@ -131,14 +185,30 @@ void LinkedList::printRev()
     cout << endl;
 }
 
+void LinkedList ::swapExtream()
+{
+    if (!head)
+    {
+        cout << "List Empty!\n";
+        return;
+    }
+    Node *temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    swap(temp->data, head->data);
+}
 int main()
 {
     LinkedList *list = new LinkedList();
     list->push_back(10);
     list->push_back(11);
     list->push_back(12);
-    list->push_back(13);
-    list->push(5, 100);
+    list->push_back(14);
+    list->push_back(15);
+    list->print();
+    list->swapExtream();
     list->print();
     return 0;
 }
