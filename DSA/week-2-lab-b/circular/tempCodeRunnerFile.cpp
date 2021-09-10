@@ -1,0 +1,1 @@
+    list->push_back(70);
