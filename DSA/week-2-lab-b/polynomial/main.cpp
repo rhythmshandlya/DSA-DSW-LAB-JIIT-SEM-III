@@ -89,6 +89,7 @@ void Polynomial::print()
     }
     while (temp)
     {
+
         if (!temp->next)
         {
             cout << temp->val << "X^" << temp->exp;
@@ -125,14 +126,14 @@ int main()
     // insert(constant,exponent);
     cout << "(";
     a->insert(1, 2);
-    a->insert(2, 3);
+    a->insert(7, 0);
     a->print();
     cout << ") X (";
 
     // b = 3X^3 + 5X^4 + 10X^1
-    b->insert(3, 3);
-    b->insert(5, 4);
-    b->insert(10, 1);
+    b->insert(5, 3);
+    b->insert(3, 5);
+    b->insert(12, 5);
     b->print();
     cout << ") = ";
 

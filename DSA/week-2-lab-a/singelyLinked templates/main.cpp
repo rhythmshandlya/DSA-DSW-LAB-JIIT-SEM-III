@@ -4,10 +4,11 @@
 #include <cmath>
 using namespace std;
 
+template <typename TN>
 class Node
 {
 public:
-    int data;
+    TN data;
     Node *next;
     Node *prev;
     Node(int d = 0)
@@ -18,9 +19,10 @@ public:
     }
 };
 
+template <typename TL>
 class LinkedList
 {
-    Node *head;
+    Node<TL> *head;
 
 public:
     LinkedList()
@@ -111,13 +113,9 @@ void LinkedList::deleteElement(int index)
     {
         temp->prev->next = temp->next;
         delete temp;
-        return;
     }
     else
-    {
         cout << "Invalid Index To DeleteElement Function/n";
-        return;
-    }
 }
 void LinkedList::push(int index, int data)
 {
@@ -201,7 +199,7 @@ void LinkedList ::swapExtream()
 }
 int main()
 {
-    LinkedList *list = new LinkedList();
+    /*   LinkedList *list = new LinkedList();
     list->push_back(10);
     list->push_back(11);
     list->push_back(12);
@@ -209,6 +207,6 @@ int main()
     list->push_back(15);
     list->print();
     list->swapExtream();
-    list->print();
+    list->print(); */
     return 0;
 }

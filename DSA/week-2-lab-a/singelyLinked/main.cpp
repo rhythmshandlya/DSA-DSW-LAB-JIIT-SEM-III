@@ -73,20 +73,20 @@ void LinkedList::push(int index, int data)
         push_front(data);
 
     Node *temp = head;
-    while (temp && index > 1)
+    while (index && temp)
     {
         temp = temp->next;
-        --index;
+        index--;
     }
-    if (index > 1)
+    if (temp)
     {
-        cout << "Invalid Index" << endl;
-        return;
+        Node *newNode = new Node(data);
+        newNode->next = temp->next;
+        temp->next = newNode;
     }
-
-    Node *newNode = new Node(data);
-    newNode->next = temp->next;
-    temp->next = newNode;
+    else
+        cout << "Invalid Index" << endl;
+    return;
 }
 
 void LinkedList::print()
