@@ -40,7 +40,10 @@ public:
     void storeDigits(int);
 
     void deleteElement(int);
+    void findPairs(int num);
     void swapEnd();
+    void sort();
+    int countTriplets(int x);
 };
 
 void LinkedList::push_back(int data)
@@ -207,21 +210,63 @@ void LinkedList ::swapEnd()
         print();
     }
 }
+
+void LinkedList::findPairs(int x)
+{
+    Node *back = head, *forw = head;
+    int count = 0;
+    while (back->next)
+    {
+        count++;
+        back = back->next;
+    }
+    count /= 2;
+    do
+    {
+        if (back->data + forw->data > x)
+            back = back->prev;
+        else if (back->data + forw->data < x)
+            forw = forw->next;
+        else if (back->data + forw->data == x)
+        {
+            cout << "(" << forw->data << " , " << back->data << ") ";
+            back = back->prev;
+            forw = forw->next;
+        }
+    } while (forw <= back);
+}
+
+int countDuplicates(Node *head, int skip, int x)
+{
+}
+
+int LinkedList::countTriplets(int x)
+{
+    int count = 0;
+    Node *temp = head;
+    while (temp)
+    {
+        count += countDuplicates(head, temp->data, x - temp->data);
+    }
+}
+
 int main()
 {
     LinkedList *list = new LinkedList();
     list->push_back(1);
-    list->push_back(2);
-    list->push_back(3);
-    list->push_back(4);
     list->push_back(5);
-    list->push_back(6);
-    list->push_back(7);
-    list->push_back(8);
-    list->push_back(9);
+    list->push_back(3);
     list->push_back(10);
+    list->push_back(5);
+    list->push_back(7);
+    list->push_back(9);
+    list->push_back(100);
+    list->push_back(12);
+    list->push_back(15);
 
     list->print();
-    list->swapEnd();
+    list->sort();
+    list->print();
+
     return 0;
 }
